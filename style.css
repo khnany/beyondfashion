@@ -7,7 +7,9 @@
 #image_buttons_txt2img, #txt2img_settings, #txt2img_prompt_container, #txt2img_tools, #txt2img_styles_row, #component-272, #quicksettings {
     display: none;
 }
-
+#tab_img2img, #tab_extras, #tab_pnginfo, #tab_modelmerger, #tab_train, #tab_settings, #tab_extensions{
+    display: none;
+}
 :root, .dark{
     --checkbox-label-gap: 0.25em 0.1em;
     --section-header-text-size: 12pt;
