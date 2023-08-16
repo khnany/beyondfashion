@@ -1461,11 +1461,11 @@ def create_ui():
 
     interfaces = [
         (txt2img_interface, "txt2img", "txt2img"),
-        (img2img_interface, "img2img", "img2img"),
-        (extras_interface, "Extras", "extras"),
-        (pnginfo_interface, "PNG Info", "pnginfo"),
-        (modelmerger_interface, "Checkpoint Merger", "modelmerger"),
-        (train_interface, "Train", "train"),
+        #(img2img_interface, "img2img", "img2img"),
+        #(extras_interface, "Extras", "extras"),
+        #(pnginfo_interface, "PNG Info", "pnginfo"),
+        #(modelmerger_interface, "Checkpoint Merger", "modelmerger"),
+        #(train_interface, "Train", "train"),
     ]
 
     interfaces += script_callbacks.ui_tabs_callback()
@@ -1478,7 +1478,7 @@ def create_ui():
     for _interface, label, _ifid in interfaces:
         shared.tab_names.append(label)
 
-    with gr.Blocks(theme=shared.gradio_theme, analytics_enabled=False, title="Stable Diffusion") as demo:
+    with gr.Blocks(theme=shared.gradio_theme, analytics_enabled=False, title="Beyondfasion") as demo:
         settings.add_quicksettings()
 
         parameters_copypaste.connect_paste_params_buttons()
@@ -1507,7 +1507,6 @@ def create_ui():
             gr.Audio(interactive=False, value=os.path.join(script_path, "notification.mp3"), elem_id="audio_notification", visible=False)
 
         footer = shared.html("footer.html")
-        footer = footer.format(versions=versions_html(), api_docs="/docs" if shared.cmd_opts.api else "https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/API")
         gr.HTML(footer, elem_id="footer")
 
         settings.add_functionality(demo)
@@ -1561,34 +1560,6 @@ def create_ui():
 
     return demo
 
-
-def versions_html():
-    import torch
-    import launch
-
-    python_version = ".".join([str(x) for x in sys.version_info[0:3]])
-    commit = launch.commit_hash()
-    tag = launch.git_tag()
-
-    if shared.xformers_available:
-        import xformers
-        xformers_version = xformers.__version__
-    else:
-        xformers_version = "N/A"
-
-    return f"""
-version: <a href="https://github.com/AUTOMATIC1111/stable-diffusion-webui/commit/{commit}">{tag}</a>
-&#x2000;•&#x2000;
-python: <span title="{sys.version}">{python_version}</span>
-&#x2000;•&#x2000;
-torch: {getattr(torch, '__long_version__',torch.__version__)}
-&#x2000;•&#x2000;
-xformers: {xformers_version}
-&#x2000;•&#x2000;
-gradio: {gr.__version__}
-&#x2000;•&#x2000;
-checkpoint: <a id="sd_checkpoint_hash">N/A</a>
-"""
 
 
 def setup_ui_api(app):
