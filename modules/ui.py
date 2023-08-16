@@ -1479,6 +1479,8 @@ def create_ui():
         shared.tab_names.append(label)
 
     with gr.Blocks(theme=shared.gradio_theme, analytics_enabled=False, title="Beyondfasion") as demo:
+        header = shared.html("header.html")
+        gr.HTML(header, elem_id="logo")
         settings.add_quicksettings()
 
         parameters_copypaste.connect_paste_params_buttons()
