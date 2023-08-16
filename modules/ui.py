@@ -1478,7 +1478,7 @@ def create_ui():
     for _interface, label, _ifid in interfaces:
         shared.tab_names.append(label)
 
-    with gr.Blocks(theme=shared.gradio_theme, analytics_enabled=False, title="Beyondfasion") as demo:
+    with gr.Blocks(theme=shared.gradio_theme, analytics_enabled=False, title="Beyond Fashion") as demo:
         header = shared.html("header.html")
         gr.HTML(header, elem_id="logo")
         settings.add_quicksettings()
