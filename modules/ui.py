@@ -417,7 +417,11 @@ def create_ui():
 
     modules.scripts.scripts_current = modules.scripts.scripts_txt2img
     modules.scripts.scripts_txt2img.initialize_scripts(is_img2img=False)
-
+    with gr.Column(elem_id='ti_gallery_container'):
+                    ti_output = gr.Text(elem_id="ti_output", value="", show_label=False)
+                    gr.Gallery(label='Output', show_label=False, elem_id='ti_gallery').style(columns=4)
+                    gr.HTML(elem_id="ti_progress", value="")
+                    ti_outcome = gr.HTML(elem_id="ti_error", value="")
     with gr.Blocks(analytics_enabled=False) as txt2img_interface:
         txt2img_prompt, txt2img_prompt_styles, txt2img_negative_prompt, submit, _, _, txt2img_prompt_style_apply, txt2img_save_style, txt2img_paste, extra_networks_button, token_counter, token_button, negative_token_counter, negative_token_button, restore_progress_button = create_toprow(is_img2img=False)
 
@@ -1141,11 +1145,7 @@ def create_ui():
             gr.HTML(value="<p style='margin-bottom: 0.7em'>See <b><a href=\"https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion\">wiki</a></b> for detailed explanation.</p>")
 
         with gr.Row(variant="compact").style(equal_height=False):
-            with gr.Column(elem_id='ti_gallery_container'):
-                ti_output = gr.Text(elem_id="ti_output", value="", show_label=False)
-                gr.Gallery(label='Output', show_label=False, elem_id='ti_gallery').style(columns=4)
-                gr.HTML(elem_id="ti_progress", value="")
-                ti_outcome = gr.HTML(elem_id="ti_error", value="")
+           
 
             with gr.Tabs(elem_id="train_tabs"):
 
