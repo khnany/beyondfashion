@@ -3,7 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap');
 
 /* general gradio fixes */
-
+#txt2img_skip {
+    display: none;
+}
 #image_buttons_txt2img, #txt2img_settings, #txt2img_prompt_container, #txt2img_tools, #txt2img_styles_row, #component-272, #quicksettings {
     display: none;
 }

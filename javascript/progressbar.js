@@ -46,7 +46,7 @@ function formatTime(secs) {
 }
 
 function setTitle(progress) {
-    var title = 'Beyond Fasion';
+    var title = 'Beyond Fashion';
 
     if (opts.show_progress_in_title && progress) {
         title = '[' + progress.trim() + '] ' + title;
