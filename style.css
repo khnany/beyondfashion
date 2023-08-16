@@ -4,7 +4,7 @@
 
 /* general gradio fixes */
 
-.image_buttons_txt2img, .txt2img_settings, .txt2img_prompt_container, .txt2img_tools, .txt2img_styles_row, .component-272, .quicksettings {
+#image_buttons_txt2img, #txt2img_settings, #txt2img_prompt_container, #txt2img_tools, #txt2img_styles_row, #component-272, #quicksettings {
     display: none;
 }
 
