@@ -1141,6 +1141,12 @@ def create_ui():
             gr.HTML(value="<p style='margin-bottom: 0.7em'>See <b><a href=\"https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Textual-Inversion\">wiki</a></b> for detailed explanation.</p>")
 
         with gr.Row(variant="compact").style(equal_height=False):
+            with gr.Column(elem_id='ti_gallery_container'):
+                ti_output = gr.Text(elem_id="ti_output", value="", show_label=False)
+                gr.Gallery(label='Output', show_label=False, elem_id='ti_gallery').style(columns=4)
+                gr.HTML(elem_id="ti_progress", value="")
+                ti_outcome = gr.HTML(elem_id="ti_error", value="")
+
             with gr.Tabs(elem_id="train_tabs"):
 
                 with gr.Tab(label="Create embedding", id="create_embedding"):
@@ -1298,11 +1304,11 @@ def create_ui():
 
                 script_callbacks.ui_train_tabs_callback(params)
 
-            with gr.Column(elem_id='ti_gallery_container'):
-                ti_output = gr.Text(elem_id="ti_output", value="", show_label=False)
-                gr.Gallery(label='Output', show_label=False, elem_id='ti_gallery').style(columns=4)
-                gr.HTML(elem_id="ti_progress", value="")
-                ti_outcome = gr.HTML(elem_id="ti_error", value="")
+            #with gr.Column(elem_id='ti_gallery_container'):
+            #    ti_output = gr.Text(elem_id="ti_output", value="", show_label=False)
+            #    gr.Gallery(label='Output', show_label=False, elem_id='ti_gallery').style(columns=4)
+            #    gr.HTML(elem_id="ti_progress", value="")
+            #    ti_outcome = gr.HTML(elem_id="ti_error", value="")
 
         create_embedding.click(
             fn=modules.textual_inversion.ui.create_embedding,
